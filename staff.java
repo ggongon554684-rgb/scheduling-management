@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.awt.Cursor;
+import java.util.ArrayList;
 
 // Swing & AWT
 import javax.swing.*;
@@ -40,6 +42,8 @@ public class staff extends javax.swing.JFrame {
 private static final String FILE_PATH = "data.txt";
 private static final String HISTORY_PATH = "history.txt";
 private TableRowSorter<DefaultTableModel> historySorter;
+private TableRowSorter<DefaultTableModel> scheduleSorter;
+
 
 private JLabel patientsValueLabel;
     private JLabel pendingValueLabel;
@@ -84,6 +88,13 @@ private JLabel patientsValueLabel;
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        HISTORYPANEL = new javax.swing.JPanel();
+        seachfield = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        detailsbutton = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
         SCHEDULEPANEL = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduletab = new javax.swing.JTable();
@@ -91,12 +102,9 @@ private JLabel patientsValueLabel;
         RESCHEDULE = new javax.swing.JButton();
         DELETE = new javax.swing.JButton();
         ADD1 = new javax.swing.JButton();
-        HISTORYPANEL = new javax.swing.JPanel();
-        seachfield = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        detailsbutton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        schedulefield = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1500, 700));
@@ -271,6 +279,68 @@ private JLabel patientsValueLabel;
         getContentPane().add(DASHBAORD);
         DASHBAORD.setBounds(0, 110, 1500, 600);
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Search");
+
+        detailsbutton.setBackground(new java.awt.Color(0, 102, 102));
+        detailsbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        detailsbutton.setForeground(new java.awt.Color(255, 255, 255));
+        detailsbutton.setText("Details");
+        detailsbutton.setPreferredSize(new java.awt.Dimension(1500, 700));
+        detailsbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailsbuttonActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Age", "Syntomps", "Data entered", "Consultation Date|Time", "Consultation Status" }));
+
+        javax.swing.GroupLayout HISTORYPANELLayout = new javax.swing.GroupLayout(HISTORYPANEL);
+        HISTORYPANEL.setLayout(HISTORYPANELLayout);
+        HISTORYPANELLayout.setHorizontalGroup(
+            HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1430, Short.MAX_VALUE)
+            .addGroup(HISTORYPANELLayout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(seachfield, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(detailsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        HISTORYPANELLayout.setVerticalGroup(
+            HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HISTORYPANELLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seachfield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(detailsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(HISTORYPANEL);
+        HISTORYPANEL.setBounds(30, 120, 1430, 540);
+
         SCHEDULEPANEL.setLayout(null);
 
         jScrollPane1.setBorder(null);
@@ -278,7 +348,7 @@ private JLabel patientsValueLabel;
         jScrollPane1.setViewportView(scheduletab);
 
         SCHEDULEPANEL.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 10, 1430, 480);
+        jScrollPane1.setBounds(30, 50, 1430, 440);
 
         refresh.setBackground(new java.awt.Color(0, 102, 102));
         refresh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -328,64 +398,20 @@ private JLabel patientsValueLabel;
         SCHEDULEPANEL.add(ADD1);
         ADD1.setBounds(1060, 510, 120, 30);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Search:");
+        SCHEDULEPANEL.add(jLabel4);
+        jLabel4.setBounds(30, 20, 80, 16);
+        SCHEDULEPANEL.add(schedulefield);
+        schedulefield.setBounds(80, 12, 240, 30);
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Age", "Syntoms", "Date entered", "Consultation Date|Time", "Consultation Status" }));
+        SCHEDULEPANEL.add(jComboBox1);
+        jComboBox1.setBounds(340, 10, 320, 30);
+
         getContentPane().add(SCHEDULEPANEL);
         SCHEDULEPANEL.setBounds(0, 110, 1500, 590);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Search");
-
-        detailsbutton.setBackground(new java.awt.Color(0, 102, 102));
-        detailsbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        detailsbutton.setForeground(new java.awt.Color(255, 255, 255));
-        detailsbutton.setText("Details");
-        detailsbutton.setPreferredSize(new java.awt.Dimension(1500, 700));
-        detailsbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailsbuttonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout HISTORYPANELLayout = new javax.swing.GroupLayout(HISTORYPANEL);
-        HISTORYPANEL.setLayout(HISTORYPANELLayout);
-        HISTORYPANELLayout.setHorizontalGroup(
-            HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1430, Short.MAX_VALUE)
-            .addGroup(HISTORYPANELLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(seachfield, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(detailsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        HISTORYPANELLayout.setVerticalGroup(
-            HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HISTORYPANELLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(HISTORYPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(seachfield, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(detailsbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(HISTORYPANEL);
-        HISTORYPANEL.setBounds(30, 120, 1430, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -410,11 +436,11 @@ public void loadHistoryData() {
    initHistorySearchFunctionality();
 }
 private void initHistorySearchFunctionality() {
-    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+   DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     historySorter = new TableRowSorter<>(model);
     jTable2.setRowSorter(historySorter);
 
-    // 🔹 Add comparators safely for all columns
+    // Add comparators safely for all columns
     for (int i = 0; i < jTable2.getColumnCount(); i++) {
         if (jTable2.getColumnName(i).equalsIgnoreCase("Consultation Status")) {
             // Custom comparator for Consultation Status column
@@ -432,7 +458,7 @@ private void initHistorySearchFunctionality() {
         }
     }
 
-    // 🔹 Add live search listener
+    // Add live search listener with column filtering
     seachfield.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
         @Override
         public void insertUpdate(javax.swing.event.DocumentEvent e) { filterHistoryTable(); }
@@ -447,10 +473,97 @@ private void initHistorySearchFunctionality() {
                 historySorter.setRowFilter(null);
             } else {
                 try {
-                    historySorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + text));
+                    // Get selected column from dropdown
+                    int selectedIndex = jComboBox2.getSelectedIndex();
+                    
+                    // Create column-specific filter
+                    historySorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, selectedIndex));
                 } catch (java.util.regex.PatternSyntaxException ex) {
                     System.out.println("Invalid regex: " + ex.getMessage());
                     historySorter.setRowFilter(null);
+                }
+            }
+        }
+    });
+    
+    // Add listener to combo box so filter updates when column changes
+    jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            // Trigger filter refresh when dropdown selection changes
+            String text = seachfield.getText();
+            if (!text.trim().isEmpty()) {
+                try {
+                    int selectedIndex = jComboBox2.getSelectedIndex();
+                    historySorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, selectedIndex));
+                } catch (java.util.regex.PatternSyntaxException ex) {
+                    historySorter.setRowFilter(null);
+                }
+            }
+        }
+    });
+}
+private void initScheduleSearchFunctionality() {
+  DefaultTableModel model = (DefaultTableModel) scheduletab.getModel();
+    scheduleSorter = new TableRowSorter<>(model);
+    scheduletab.setRowSorter(scheduleSorter);
+
+    // Add comparators safely for all columns
+    for (int i = 0; i < scheduletab.getColumnCount(); i++) {
+        if (scheduletab.getColumnName(i).equalsIgnoreCase("Consultation Status")) {
+            scheduleSorter.setComparator(i, (o1, o2) -> {
+                String s1 = o1 == null ? "" : o1.toString();
+                String s2 = o2 == null ? "" : o2.toString();
+                return Integer.compare(historyStatusRank(s1), historyStatusRank(s2));
+            });
+        } else {
+            scheduleSorter.setComparator(i, Comparator.comparing(
+                    (Object o) -> o == null ? "" : o.toString(),
+                    String.CASE_INSENSITIVE_ORDER
+            ));
+        }
+    }
+
+    // Add live search listener with column filtering
+    schedulefield.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+        @Override
+        public void insertUpdate(javax.swing.event.DocumentEvent e) { filterScheduleTable(); }
+        @Override
+        public void removeUpdate(javax.swing.event.DocumentEvent e) { filterScheduleTable(); }
+        @Override
+        public void changedUpdate(javax.swing.event.DocumentEvent e) { filterScheduleTable(); }
+        
+        private void filterScheduleTable() {
+            String text = schedulefield.getText();
+            if (text.trim().isEmpty()) {
+                scheduleSorter.setRowFilter(null);
+            } else {
+                try {
+                    // Get selected column from dropdown
+                    int selectedIndex = jComboBox1.getSelectedIndex();
+                    
+                    // Create column-specific filter
+                    scheduleSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, selectedIndex));
+                } catch (java.util.regex.PatternSyntaxException ex) {
+                    System.out.println("Invalid regex: " + ex.getMessage());
+                    scheduleSorter.setRowFilter(null);
+                }
+            }
+        }
+    });
+    
+    // Add listener to combo box so filter updates when column changes
+    jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            // Trigger filter refresh when dropdown selection changes
+            String text = schedulefield.getText();
+            if (!text.trim().isEmpty()) {
+                try {
+                    int selectedIndex = jComboBox1.getSelectedIndex();
+                    scheduleSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, selectedIndex));
+                } catch (java.util.regex.PatternSyntaxException ex) {
+                    scheduleSorter.setRowFilter(null);
                 }
             }
         }
@@ -483,50 +596,69 @@ private void setupDashboard() {
     int startY = 30;
 
     java.util.function.BiConsumer<javax.swing.JPanel, Integer> initCard = (panelRef, index) -> {
-        panelRef.removeAll();
+    panelRef.removeAll();
 
-        // ✅ Set specific colors
-        if (index == 2) panelRef.setBackground(GREEN); // Completed consultations
-        else panelRef.setBackground(TEAL);
+    // Set specific colors
+    if (index == 2) panelRef.setBackground(GREEN);
+    else panelRef.setBackground(TEAL);
 
-        panelRef.setLayout(new BorderLayout());
-        panelRef.setBorder(BorderFactory.createEmptyBorder(10, 12, 10, 12));
+    panelRef.setLayout(new BorderLayout());
+    panelRef.setBorder(BorderFactory.createEmptyBorder(10, 12, 10, 12));
 
-        // Title label
-        JLabel title = new JLabel(
-            index == 0 ? "Patients Today" :
-            (index == 1 ? "Scheduled Consultations" : "Completed Consultations"),
-            SwingConstants.CENTER
-        );
-        title.setFont(TITLE_FONT);
-        title.setForeground(Color.WHITE);
+    // Title label
+    JLabel title = new JLabel(
+        index == 0 ? "Patients Today" :
+        (index == 1 ? "Scheduled Consultations" : "Completed Consultations"),
+        SwingConstants.CENTER
+    );
+    title.setFont(TITLE_FONT);
+    title.setForeground(Color.WHITE);
 
-        // Value label
-        JLabel value = new JLabel("0", SwingConstants.CENTER);
-        value.setFont(VALUE_FONT);
-        value.setForeground(Color.WHITE);
+    // Value label (clickable for index 0 = Patients Today)
+    JLabel value = new JLabel("0", SwingConstants.CENTER);
+    value.setFont(VALUE_FONT);
+    value.setForeground(Color.WHITE);
+    
+    // Make "Patients Today" clickable
+    if (index == 0) {
+        value.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        value.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showTodaysPatientsPopup();
+            }
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                value.setForeground(new Color(200, 200, 200)); // Lighter on hover
+            }
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                value.setForeground(Color.WHITE); // Back to white
+            }
+        });
+    }
 
-        // Date label
-        String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH));
-        JLabel date = new JLabel("As of " + formattedDate, SwingConstants.CENTER);
-        date.setFont(DATE_FONT);
-        date.setForeground(DATE_GRAY);
+    // Date label
+    String formattedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH));
+    JLabel date = new JLabel("As of " + formattedDate, SwingConstants.CENTER);
+    date.setFont(DATE_FONT);
+    date.setForeground(DATE_GRAY);
 
-        // Save references
-        if (index == 0) { patientsValueLabel = value; patientsDateLabel = date; }
-        if (index == 1) { pendingValueLabel = value; pendingDateLabel = date; }
-        if (index == 2) { completedValueLabel = value; completedDateLabel = date; }
+    // Save references
+    if (index == 0) { patientsValueLabel = value; patientsDateLabel = date; }
+    if (index == 1) { pendingValueLabel = value; pendingDateLabel = date; }
+    if (index == 2) { completedValueLabel = value; completedDateLabel = date; }
 
-        JPanel inner = new JPanel(new GridLayout(3, 1));
-        inner.setOpaque(false);
-        inner.add(title);
-        inner.add(value);
-        inner.add(date);
+    JPanel inner = new JPanel(new GridLayout(3, 1));
+    inner.setOpaque(false);
+    inner.add(title);
+    inner.add(value);
+    inner.add(date);
 
-        panelRef.add(inner, BorderLayout.CENTER);
-        panelRef.setBounds(startX + index * (cardW + gap), startY, cardW, cardH);
-        panelRef.revalidate();
-        panelRef.repaint();
+    panelRef.add(inner, BorderLayout.CENTER);
+    panelRef.setBounds(startX + index * (cardW + gap), startY, cardW, cardH);
+    panelRef.revalidate();
+    panelRef.repaint();
     };
 
     initCard.accept(jPanel5, 0);
@@ -543,6 +675,86 @@ private void setupDashboard() {
 
     DASHBAORD.revalidate();
     DASHBAORD.repaint();
+}
+private void showTodaysPatientsPopup() {
+    ArrayList<String[]> todaysPatients = new ArrayList<>();
+    String today = LocalDate.now().toString();
+    
+    // Read today's patients from data.txt
+    try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.trim().isEmpty()) continue;
+            String[] data = line.split(",", -1);
+            
+            // Check if appointment is today (index 4 = Consultation Date|Time)
+            if (data.length >= 6 && data[4].contains(today)) {
+                todaysPatients.add(data);
+            }
+        }
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this,
+            "Error reading patient data: " + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // If no patients today
+    if (todaysPatients.isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+            "No patients scheduled for today.",
+            "Today's Patients",
+            JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+    
+    // Create table data
+    String[] columns = {"Name", "Age", "Symptoms", "Date Entered", "Consultation Date|Time", "Status"};
+    Object[][] data = new Object[todaysPatients.size()][6];
+    
+    for (int i = 0; i < todaysPatients.size(); i++) {
+        String[] patient = todaysPatients.get(i);
+        data[i][0] = patient[0].trim(); // Name
+        data[i][1] = patient[1].trim(); // Age
+        data[i][2] = patient[2].trim(); // Symptoms
+        data[i][3] = patient[3].trim(); // Date Entered
+        data[i][4] = patient[4].trim(); // Consultation Date|Time
+        data[i][5] = patient[5].trim(); // Status
+    }
+    
+    // Create table with custom styling
+    JTable table = new JTable(data, columns);
+    table.setEnabled(false); // Read-only
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+    table.setRowHeight(25);
+    table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+    table.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+    
+    // Apply table styling
+    tablestyle.applyStyle(table);
+    
+    // Create scroll pane
+    JScrollPane scrollPane = new JScrollPane(table);
+    scrollPane.setPreferredSize(new Dimension(900, 300));
+    
+    // Create panel with title
+    JPanel panel = new JPanel(new BorderLayout(10, 10));
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    
+    JLabel titleLabel = new JLabel("Patients Scheduled for Today - " + 
+        LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM dd, yyyy", Locale.ENGLISH)));
+    titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+    titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    
+    panel.add(titleLabel, BorderLayout.NORTH);
+    panel.add(scrollPane, BorderLayout.CENTER);
+    
+    // Show dialog
+    JOptionPane.showMessageDialog(this,
+        panel,
+        "Today's Patients (" + todaysPatients.size() + ")",
+        JOptionPane.PLAIN_MESSAGE);
 }
 
 
@@ -569,7 +781,7 @@ private void setupDashboard() {
     }
     private void createYearlyChart() {
        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-// initialize months
+// initialize montjahs
 String[] months = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 Map<Integer,Integer> counts = new LinkedHashMap<>();
 for (int m = 1; m <= 12; m++) counts.put(m, 0);
@@ -580,8 +792,8 @@ try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
     String line;
     while ((line = br.readLine()) != null) {
         String[] data = line.split(",");
-        if (data.length >= 5) {  // ✅ Changed from >= 6 to >= 5
-            String datePart = data[4].split(" ")[0]; // ✅ Changed from data[5] to data[4] (Consultation Date|Time)
+        if (data.length >= 5) {  // to >= 5
+            String datePart = data[4].split(" ")[0]; //  data[4] (Consultation Date|Time)
             try {
                 LocalDate d = LocalDate.parse(datePart, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 if (d.getYear() == currentYear) {
@@ -635,7 +847,7 @@ JFreeChart chart = ChartFactory.createBarChart(
 
 
 
-    
+    //controls
     private void PROMOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PROMOActionPerformed
         //DASHBOARD
        DASHBAORD.setVisible(true);
@@ -650,6 +862,7 @@ JFreeChart chart = ChartFactory.createBarChart(
       DASHBAORD.setVisible(false);
         HISTORYPANEL.setVisible(false);
         SCHEDULEPANEL.setVisible(true);
+        initScheduleSearchFunctionality();
     }//GEN-LAST:event_scheduleActionPerformed
 
     private void hsitoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hsitoryActionPerformed
@@ -848,9 +1061,12 @@ JFreeChart chart = ChartFactory.createBarChart(
     public javax.swing.JButton detailsbutton;
     public javax.swing.JButton hsitory;
     public javax.swing.JButton jButton1;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox2;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel8;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel5;
@@ -862,6 +1078,7 @@ JFreeChart chart = ChartFactory.createBarChart(
     public javax.swing.JTable jTable2;
     public javax.swing.JButton refresh;
     public javax.swing.JButton schedule;
+    public javax.swing.JTextField schedulefield;
     public javax.swing.JTable scheduletab;
     public javax.swing.JTextField seachfield;
     // End of variables declaration//GEN-END:variables
